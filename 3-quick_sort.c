@@ -6,7 +6,8 @@
  */
 void quick_sort(int *array, size_t size)
 {
-	sort_rev(array, size, 0, (size - 1));
+	if (size > 2)
+		sort_rev(array, size, 0, (size - 1));
 }
 
 /**
