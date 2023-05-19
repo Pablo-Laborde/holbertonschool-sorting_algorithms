@@ -1,12 +1,13 @@
 #include "sort.h"
 /**
  * quick_sort- sorts
+ * @array: array
  * @size: size
  * Return: void
  */
 void quick_sort(int *array, size_t size)
 {
-	if (size > 2)
+	if (size > 1)
 		sort_rev(array, size, 0, (size - 1));
 }
 
@@ -29,12 +30,7 @@ void sort_rev(int *array, size_t size, size_t min, size_t max)
 		j = max;
 		while (i != j)
 		{
-			if (array[j] >= array[i])
-				if (j > i)
-					j--;
-				else
-					j++;
-			else
+			if (array[j] < array[i])
 			{
 				a = array[j];
 				array[j] = array[i];
@@ -44,6 +40,10 @@ void sort_rev(int *array, size_t size, size_t min, size_t max)
 				i = x;
 				print_array(array, size);
 			}
+			if (j > i)
+				j--;
+			else
+				j++;
 		}
 		if (i > min)
 			sort_rev(array, size, min, (i - 1));
