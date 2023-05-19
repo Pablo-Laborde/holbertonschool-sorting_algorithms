@@ -49,6 +49,5 @@ void sort_rev(int *array, size_t size, size_t min, size_t max)
 			sort_rev(array, size, min, (i - 1));
 		if (i < max)
 			sort_rev(array, size, (i + 1), max);
-		}
 	}
 }
