@@ -54,9 +54,9 @@ void swap(int *array, size_t *mov, size_t *pivot)
 
 	if (mov != pivot)
 	{
-		a = array[mov];
-		array[mov] = array[pivot];
-		array[pivot] = a;
+		a = array[*mov];
+		array[*mov] = array[*pivot];
+		array[*pivot] = a;
 		b = *mov;
 		*pivot = *mov;
 		*mov = b;
