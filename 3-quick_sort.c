@@ -22,8 +22,7 @@ void quick_sort(int *array, size_t size)
  */
 void sort_rev(int *array, size_t size, size_t min, size_t max)
 {
-	int a;
-	size_t mov = min, pivot = max, b;
+	size_t mov = min, pivot = max;
 
 	if (min < max)
 	{
