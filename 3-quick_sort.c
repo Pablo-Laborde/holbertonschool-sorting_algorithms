@@ -9,7 +9,10 @@
 void quick_sort(int *array, size_t size)
 {
 	if (size > 1)
+	{
 		sort_rev(array, size, 0, (size - 1));
+		sort_rev(array, size, 0, (size - 1));
+	}
 }
 
 /**
@@ -24,6 +27,7 @@ void sort_rev(int *array, size_t size, size_t min, size_t max)
 {
 	size_t i, j, pivot = max;
 
+	(void)min;
   i = 0;
   while (array[i] < array[pivot])
     i++;
@@ -34,9 +38,17 @@ void sort_rev(int *array, size_t size, size_t min, size_t max)
     {
       swap(array, i, j);
       i++;
+			print_array(array, size);
     }
     j++;
   }
+	if (i != pivot)
+	{
+			swap(array, i, pivot);
+			print_array(array, size);
+	}
+	if (i > 1)
+		sort_rev(array, size, 0, (i - 1));
 }
 
 /**
