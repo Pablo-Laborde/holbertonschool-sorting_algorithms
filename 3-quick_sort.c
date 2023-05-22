@@ -1,4 +1,5 @@
 #include "sort.h"
+
 /**
  * quick_sort- sorts
  * @array: array
@@ -8,7 +9,7 @@
 void quick_sort(int *array, size_t size)
 {
 	if (size > 1)
-		sort_rev(array, size, 0, (size - 1));
+		sort_rev(array, size, 0, size - 1);
 }
 
 /**
@@ -21,33 +22,40 @@ void quick_sort(int *array, size_t size)
  */
 void sort_rev(int *array, size_t size, size_t min, size_t max)
 {
-	int a;
-	size_t x, i, j;
+	size_t i = min, j = min, pivot = max;
 
-	if (min != max)
+	if (min < max)
 	{
-		i = min;
-		j = max;
-		while (i != j)
+		while (j < pivot)
 		{
-			if (array[j] < array[i])
+			if (array[j] <= array[pivot])
 			{
-				a = array[j];
-				array[j] = array[i];
-				array[i] = a;
-				x = j;
-				j = i;
-				i = x;
+				swap(&array[i], &array[j]);
+				i++;
 				print_array(array, size);
 			}
-			if (j > i)
-				j--;
-			else
-				j++;
+			j++;	
 		}
-		if (i > min)
-			sort_rev(array, size, min, (i - 1));
-		if (i < max)
-			sort_rev(array, size, (i + 1), max);
+		swap(&array[i], &array[pivot]);
+		sort_rev(array, size, 0, pivot - 1);
+		sort_rev(array, size, pivot + 1, max);
+	}
+}
+
+/**
+ * swap- swaps two values
+ * @x: var
+ * @y: var2
+ * Return: void
+*/
+void swap(int *x, int *y)
+{
+	int a;
+
+	if (x != y)
+	{
+		a = *x;
+		*x = *y;
+		*y = a;
 	}
 }
