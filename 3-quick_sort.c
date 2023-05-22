@@ -9,7 +9,7 @@
 void quick_sort(int *array, size_t size)
 {
 	if (size > 1)
-		sort_rev(array, size, 0, size - 1);
+		sort_rev(array, size, 0, (size - 1));
 }
 
 /**
@@ -28,15 +28,19 @@ void sort_rev(int *array, size_t size, size_t min, size_t max)
 	{
 		while (mov != pivot)
 		{
-			if (array[mov] < array[pivot])
+			if ((array[mov] > array[pivot]) && (mov < pivot))
+			{
 				swap(array, &mov, &pivot);
+				print_array(array, size);
+			}
 			if (mov < pivot)
 				mov++;
 			else
 				mov--;
 		}
-		sort_rev(array, size, 0, pivot - 1);
-		sort_rev(array, size, pivot + 1, max);
+		if (pivot > 0)
+			sort_rev(array, size, 0, (pivot - 1));
+		sort_rev(array, size, (pivot + 1), max);
 	}
 }
 
@@ -58,7 +62,7 @@ void swap(int *array, size_t *mov, size_t *pivot)
 		array[*mov] = array[*pivot];
 		array[*pivot] = a;
 		b = *mov;
-		*pivot = *mov;
-		*mov = b;
+		*mov = *pivot;
+		*pivot = b;
 	}
 }
