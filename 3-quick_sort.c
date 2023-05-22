@@ -22,47 +22,35 @@ void quick_sort(int *array, size_t size)
  */
 void sort_rev(int *array, size_t size, size_t min, size_t max)
 {
-	size_t mov = min, pivot = max;
+	size_t i, j, pivot = max;
 
-	if (min < max)
-	{
-		while (mov != pivot)
-		{
-			if ((array[mov] > array[pivot]) && (mov < pivot))
-			{
-				swap(array, &mov, &pivot);
-				print_array(array, size);
-			}
-			if (mov < pivot)
-				mov++;
-			else
-				mov--;
-		}
-		if (pivot > 0)
-			sort_rev(array, size, 0, (pivot - 1));
-		sort_rev(array, size, (pivot + 1), max);
-	}
+  i = 0;
+  while (array[i] < array[pivot])
+    i++;
+  j = i + 1;
+  while (j < pivot)
+  {
+    if (array[j] < array[pivot])
+    {
+      swap(array, i, j);
+      i++;
+    }
+    j++;
+  }
 }
 
 /**
  * swap- swaps two values
  * @array: array
- * @mov: var
- * @pivot: var2
+ * @x: var
+ * @y: var2
  * Return: void
 */
-void swap(int *array, size_t *mov, size_t *pivot)
+void swap(int *array, size_t x, size_t y)
 {
 	int a;
-	size_t b;
-
-	if (mov != pivot)
-	{
-		a = array[*mov];
-		array[*mov] = array[*pivot];
-		array[*pivot] = a;
-		b = *mov;
-		*mov = *pivot;
-		*pivot = b;
-	}
+  
+  a = array[x];
+  array[x] = array[y];
+  array[y] = a;
 }

@@ -33,6 +33,6 @@ void selection_sort(int *array, size_t size);
 /* 3 */
 void quick_sort(int *array, size_t size);
 void sort_rev(int *array, size_t size, size_t min, size_t max);
-void swap(int *array, size_t *mov, size_t *pivot);
+void swap(int *array, size_t x, size_t y);
 
 #endif
