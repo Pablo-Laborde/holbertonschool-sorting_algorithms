@@ -27,7 +27,7 @@ void sort_rev(int *array, size_t size, size_t min, size_t max)
 	if (min < max)
 	{
 		i = 0;
-		while (array[i] < array[pivot])
+		while ((i <  pivot) && (array[i] <= array[pivot]))
 			i++;
 		j = i + 1;
 		while (j < pivot)
